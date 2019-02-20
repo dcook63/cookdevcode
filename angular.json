@@ -23,19 +23,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -45,13 +44,11 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             }
           }
         },
@@ -85,7 +82,22 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@salesforce-ux/design-system/assets/fonts",
+                "output": "/assets/fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@salesforce-ux/design-system/assets/icons",
+                "output": "/assets/icons/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@salesforce-ux/design-system/assets/images",
+                "output": "/assets/images/"
+              }
             ]
           }
         },
