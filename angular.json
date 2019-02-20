@@ -3,45 +3,30 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cookdev2": {
+    "cookdev": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
-      "targets": {
+      "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cookdev2",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-                {
-                    "glob": "**/*",
-                    "input": "node_modules/@salesforce-ux/design-system/assets/fonts",
-                    "output": "/assets/fonts"
-                },
-                {
-                    "glob": "**/*",
-                    "input": "node_modules/@salesforce-ux/design-system/assets/icons",
-                    "output": "/assets/icons"
-                },
-                {
-                    "glob": "**/*",
-                    "input": "node_modules/font-awesome/fonts",
-                    "output": "/assets/fonts"
-                }
+              "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css"
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -59,25 +44,32 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cookdev2:build"
+            "browserTarget": "cookdev:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cookdev2:build:production"
+              "browserTarget": "cookdev:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cookdev2:build"
+            "browserTarget": "cookdev:build"
           }
         },
         "test": {
@@ -111,19 +103,20 @@
         }
       }
     },
-    "cookdev2-e2e": {
+    "cookdev-e2e": {
       "root": "e2e/",
       "projectType": "application",
-      "targets": {
+      "prefix": "",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cookdev2:serve"
+            "devServerTarget": "cookdev:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cookdev2:serve:production"
+              "devServerTarget": "cookdev:serve:production"
             }
           }
         },
@@ -139,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "cookdev2"
+  "defaultProject": "cookdev"
 }
