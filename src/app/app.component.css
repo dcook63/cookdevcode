@@ -1,0 +1,15 @@
+.top-nav-container {
+    position: fixed;
+}
+
+.top-nav {
+    background: black;
+}
+
+.nav-item {
+    color: white;
+}
+
+.component-container {
+    margin: 50px;
+}
