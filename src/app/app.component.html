@@ -1,50 +1,85 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous">
 <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 
 <div>
-    <div class="slds-context-bar top-nav-container">
-      <div class="slds-context-bar__primary" >
-        <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
-          <div class="slds-context-bar__icon-action">
-            <button onclick="window.location.href=''" class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Navigate Home">
-              <span class="slds-icon-waffle menu-item">
-                <span class="slds-r1"></span>
-                <span class="slds-r2"></span>
-                <span class="slds-r3"></span>
-                <span class="slds-r4"></span>
-                <span class="slds-r5"></span>
-                <span class="slds-r6"></span>
-                <span class="slds-r7"></span>
-                <span class="slds-r8"></span>
-                <span class="slds-r9"></span>
-              </span>
-              <span class="slds-assistive-text">Open App Launcher</span>
-            </button>
-          </div>
-          <span class="slds-context-bar__label-action slds-context-bar__app-name">
-            <span class="slds-truncate menu-item brand" title="App Name">Cook Development</span>
-          </span>
+  <div class="slds-context-bar top-nav-container">
+    <div class="slds-context-bar__primary">
+      <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+        <div class="slds-context-bar__icon-action">
+          <button *ngIf="isMobile" (click)="showSlideDownNav()" class="slds-button slds-icon-waffle_container slds-context-bar__button"
+            title="Navigate Home">
+            <span class="slds-icon-waffle nav-item">
+              <span class="slds-r1"></span>
+              <span class="slds-r2"></span>
+              <span class="slds-r3"></span>
+              <span class="slds-r4"></span>
+              <span class="slds-r5"></span>
+              <span class="slds-r6"></span>
+              <span class="slds-r7"></span>
+              <span class="slds-r8"></span>
+              <span class="slds-r9"></span>
+            </span>
+            <span class="slds-assistive-text">Open App Launcher</span>
+          </button>
+          <button *ngIf="!isMobile" class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Navigate Home"
+            routerLink="">
+            <span class="slds-icon-waffle nav-item">
+              <span class="slds-r1"></span>
+              <span class="slds-r2"></span>
+              <span class="slds-r3"></span>
+              <span class="slds-r4"></span>
+              <span class="slds-r5"></span>
+              <span class="slds-r6"></span>
+              <span class="slds-r7"></span>
+              <span class="slds-r8"></span>
+              <span class="slds-r9"></span>
+            </span>
+            <span class="slds-assistive-text">Open App Launcher</span>
+          </button>
         </div>
+        <span class="slds-context-bar__label-action slds-context-bar__app-name">
+          <span class="slds-truncate brand" title="App Name">Cook Development</span>
+        </span>
       </div>
-      <nav class="slds-context-bar__secondary" role="navigation">
-        <ul class="slds-grid">
-          <li class="slds-context-bar__item">
-              <a href="about-daniel" class="slds-context-bar__label-action" title="Menu Item">
-                <span class="slds-truncate menu-item" title="About Daniel"><i class="fas fa-male"></i> About Daniel</span>
-              </a>
-            </li>
-          <li class="slds-context-bar__item">
-            <a href="about-alaina" class="slds-context-bar__label-action" title="Menu Item">
-              <span class="slds-truncate menu-item" title="About Alaina"><i class="fas fa-female"></i> About Alaina</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
+
+    <nav *ngIf="!isMobile" class="slds-context-bar__secondary" role="navigation">
+      <ul class="slds-grid">
+        <li class="slds-context-bar__item" *ngIf="isMobile">
+          <a href="" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate nav-item" title="Home"> Home</span>
+          </a>
+        </li>
+        <li class="slds-context-bar__item nav-item">
+          <a href="about-daniel" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate nav-item" title="About Daniel"><i class="fas fa-male"></i>  About Daniel</span>
+          </a>
+        </li>
+        <li class="slds-context-bar__item nav-item">
+          <a href="about-alaina" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate nav-item" title="About Alaina"><i class="fas fa-female"></i>  About Alaina</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
+</div>
+
+<div *ngIf="isMobile" class="slide-nav">
+  <div [ngClass]="{'slide-in': slideDownNav, 'slide-out': !slideDownNav}">
+    <nav class="slds-nav-vertical">
+        <ul aria-describedby="entity-header">
+            <li class="slds-nav-vertical__item" *ngFor="let item of menuItems">
+              <a routerLink="{{item.route}}" class="slds-nav-vertical__action nav-item"><i style="padding-right:5px" class="{{item.iconText}}"></i>{{item.label}}</a>
+            </li>
+        </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="overlay web-background">
   <div class="component-container">
-  <router-outlet></router-outlet>
-</div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
