@@ -1,14 +1,15 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-  crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 
 <div>
   <div class="slds-context-bar top-nav-container">
     <div class="slds-context-bar__primary">
-      <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+      <div
+        class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
         <div class="slds-context-bar__icon-action">
-          <button *ngIf="isMobile" (click)="showSlideDownNav()" class="slds-button slds-icon-waffle_container slds-context-bar__button"
-            title="Navigate Home">
+          <button *ngIf="isMobile" (click)="showSlideDownNav()"
+            class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Navigate Home">
             <span class="slds-icon-waffle nav-item">
               <span class="slds-r1"></span>
               <span class="slds-r2"></span>
@@ -22,8 +23,8 @@
             </span>
             <span class="slds-assistive-text">Open App Launcher</span>
           </button>
-          <button *ngIf="!isMobile" class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Navigate Home"
-            routerLink="">
+          <button *ngIf="!isMobile" class="slds-button slds-icon-waffle_container slds-context-bar__button"
+            title="Navigate Home" routerLink="">
             <span class="slds-icon-waffle nav-item">
               <span class="slds-r1"></span>
               <span class="slds-r2"></span>
@@ -51,14 +52,51 @@
             <span class="slds-truncate nav-item" title="Home"> Home</span>
           </a>
         </li>
+
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click dropdown-nav-item"
+          [ngClass]="{'slds-is-open': danielOpen}">
+          <button id="daniel-menu" class="slds-truncate nav-item" role="menu" aria-haspopup="true"
+            title="About Daniel"><i class="fas fa-male"></i> Daniel</button>
+          <div class="slds-dropdown slds-dropdown_left dropdown-list">
+            <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+              <li class="slds-dropdown__item" role="presentation">
+                <button class="nav-item" href="daniel/about-daniel" role="menuitem" tabindex="0">
+                  <span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+                </button>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <button class="nav-item" href="daniel/projects" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click dropdown-nav-item"
+          [ngClass]="{'slds-is-open': alainaOpen}">
+          <button id="alaina-menu" class="slds-truncate nav-item" title="About Alaina"><i class="fas fa-female"></i>
+            Alaina</button>
+          <div class="slds-dropdown slds-dropdown_left dropdown-list">
+            <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+              <li class="slds-dropdown__item" role="presentation">
+                <button class="nav-item" href="daniel/about-daniel" role="menuitem" tabindex="0">
+                  <span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+                </button>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <button class="nav-item" href="daniel/projects" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <li class="slds-context-bar__item nav-item">
-          <a href="about-daniel" class="slds-context-bar__label-action" title="Menu Item">
-            <span class="slds-truncate nav-item" title="About Daniel"><i class="fas fa-male"></i>  About Daniel</span>
-          </a>
-        </li>
-        <li class="slds-context-bar__item nav-item">
-          <a href="about-alaina" class="slds-context-bar__label-action" title="Menu Item">
-            <span class="slds-truncate nav-item" title="About Alaina"><i class="fas fa-female"></i>  About Alaina</span>
+          <a href="about-cookdev" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate nav-item" title="About Cook Development"><i class="fas fa-laptop-code"></i> About
+              Cook Development</span>
           </a>
         </li>
       </ul>
@@ -69,11 +107,12 @@
 <div *ngIf="isMobile" class="slide-nav">
   <div [ngClass]="{'slide-in': slideDownNav, 'slide-out': !slideDownNav}">
     <nav class="slds-nav-vertical">
-        <ul aria-describedby="entity-header">
-            <li class="slds-nav-vertical__item" *ngFor="let item of menuItems">
-              <a routerLink="{{item.route}}" class="slds-nav-vertical__action nav-item"><i style="padding-right:5px" class="{{item.iconText}}"></i>{{item.label}}</a>
-            </li>
-        </ul>
+      <ul aria-describedby="entity-header">
+        <li class="slds-nav-vertical__item" *ngFor="let item of menuItems">
+          <a (click)="navigatePage(item.route)" class="slds-nav-vertical__action nav-item"><i style="padding-right:5px"
+              class="{{item.iconText}}"></i>{{item.label}}</a>
+        </li>
+      </ul>
     </nav>
   </div>
 </div>
