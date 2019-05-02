@@ -8,7 +8,7 @@
       <div
         class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
         <div class="slds-context-bar__icon-action">
-          <button *ngIf="isMobile" (click)="showSlideDownNav()"
+          <button id="nav-menu" *ngIf="isMobile" (click)="showSlideDownNav()"
             class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Navigate Home">
             <span class="slds-icon-waffle nav-item">
               <span class="slds-r1"></span>
@@ -60,13 +60,13 @@
           <div class="slds-dropdown slds-dropdown_left dropdown-list">
             <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
               <li class="slds-dropdown__item" role="presentation">
-                <button class="nav-item" href="daniel/about-daniel" role="menuitem" tabindex="0">
-                  <span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+                <button class="nav-item" routerLink="daniel/about-daniel" role="menuitem" tabindex="0">
+                  <span class="slds-truncate" title="Menu Item One">About Daniel</span>
                 </button>
               </li>
               <li class="slds-dropdown__item" role="presentation">
-                <button class="nav-item" href="daniel/projects" role="menuitem" tabindex="-1">
-                  <span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+                <button class="nav-item" routerLink="daniel/projects" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Menu Item Two">Daniel's Projects</span>
                 </button>
               </li>
             </ul>
@@ -80,13 +80,13 @@
           <div class="slds-dropdown slds-dropdown_left dropdown-list">
             <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
               <li class="slds-dropdown__item" role="presentation">
-                <button class="nav-item" href="daniel/about-daniel" role="menuitem" tabindex="0">
-                  <span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+                <button class="nav-item" routerLink="alaina/about-alaina" role="menuitem" tabindex="0">
+                  <span class="slds-truncate" title="Menu Item One">About Alaina</span>
                 </button>
               </li>
               <li class="slds-dropdown__item" role="presentation">
-                <button class="nav-item" href="daniel/projects" role="menuitem" tabindex="-1">
-                  <span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+                <button class="nav-item" routerLink="alaina/projects" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Menu Item Two">Alaina's Projects</span>
                 </button>
               </li>
             </ul>
@@ -94,7 +94,7 @@
         </div>
 
         <li class="slds-context-bar__item nav-item">
-          <a href="about-cookdev" class="slds-context-bar__label-action" title="Menu Item">
+          <a routerLink="about-cookdev" class="slds-context-bar__label-action" title="Menu Item">
             <span class="slds-truncate nav-item" title="About Cook Development"><i class="fas fa-laptop-code"></i> About
               Cook Development</span>
           </a>
@@ -108,9 +108,22 @@
   <div [ngClass]="{'slide-in': slideDownNav, 'slide-out': !slideDownNav}">
     <nav class="slds-nav-vertical">
       <ul aria-describedby="entity-header">
-        <li class="slds-nav-vertical__item" *ngFor="let item of menuItems">
-          <a (click)="navigatePage(item.route)" class="slds-nav-vertical__action nav-item"><i style="padding-right:5px"
-              class="{{item.iconText}}"></i>{{item.label}}</a>
+        <li class="slds-nav-vertical__item--big" *ngFor="let section of menuItems">
+          <a (click)="showSlideDownNav()"*ngIf="section.route" routerLink="{{section.route}}" class="slds-nav-vertical__action nav-item">
+            <i style="padding-right:5px" class="{{section.iconText}}"></i>
+            {{section.sectionName}}
+          </a>
+          <a *ngIf="!section.route" class="slds-nav-vertical__action nav-item">
+              <i style="padding-right:5px" class="{{section.iconText}}"></i>
+              {{section.sectionName}}
+            </a>
+          <ul>
+            <li class="slds-nav-vertical__item--small" *ngFor="let item of section.items">
+              <a (click)="showSlideDownNav()" routerLink="{{item.route}}" class="slds-nav-vertical__action nav-item">
+                {{item.name}}
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

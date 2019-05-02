@@ -1,11 +1,17 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { zip } from '../../node_modules/rxjs';
 
-export interface IMenuItem {
+export interface IMenuSection<T> extends IMenuItem {
+  sectionName?: string;
   iconText: string;
-  label: string;
-  route: string;
+  items?: T[]
 }
+
+export interface IMenuItem {
+  name?: string;
+  route?: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,27 +25,45 @@ export class AppComponent implements OnInit {
   danielOpen = false;
   alainaOpen = false;
 
-  menuItems: IMenuItem[] = [
+  menuItems: Array<IMenuSection<IMenuItem>> = [
     {
+      sectionName: ' Home',
+      route: 'home',
       iconText: 'fa fa-home',
-      label: ' Home',
-      route: ''
     },
     {
-      iconText: 'fas fa-laptop-code',
-      label: ' About Cook Development',
-      route: 'about-cook-dev'
-    },
-    {
+      sectionName: ' Daniel',
       iconText: 'fa fa-male',
-      label: ' About Daniel',
-      route: 'about-daniel'
+      items: [
+        {
+          name: "About Daniel",
+          route: "daniel/about-daniel"
+        },
+        {
+          name: "Daniel's Projects",
+          route: 'daniel/projects'
+        }
+      ]
     },
     {
+      sectionName: ' Alaina',
       iconText: 'fa fa-female',
-      label: ' About Alaina',
-      route: 'about-alaina'
+      items: [
+        {
+          name: "About Alaina",
+          route: "alaina/about-alaina",
+        },
+        {
+          name: "Alaina's Projects",
+          route: "alaina/projects",
+        }
+      ]
     },
+    {
+      sectionName: ' About Cook Development',
+      route: 'about-cookdev',
+      iconText: 'fas fa-laptop-code'
+    }
   ];
 
   ngOnInit() {
@@ -71,10 +95,6 @@ export class AppComponent implements OnInit {
 
   setIsMobile() {
     this.isMobile = window.innerWidth <= 768;
-  }
-
-  navigatePage(routerLink: string) {
-    this.showSlideDownNav();
   }
 
   showSlideDownNav() {

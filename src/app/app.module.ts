@@ -14,7 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'about-cookdev', component: AboutCookDevComponent },
   { path: 'alaina/about-alaina', component: AboutAlainaComponent },
   { path: 'alaina', component: HomeComponent },
