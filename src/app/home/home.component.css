@@ -1,0 +1,20 @@
+.home-page-container {
+  background: rgb(21,21,21, .9);
+  max-width: 750px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 5%;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 40px;
+  font-family: Georgia, serif, cursive;
+}
+
+.about-page__text {
+  color: #4591db;
+  font-size: 16px;
+  font-family: Georgia, serif, cursive;
+}

@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: "/home", pathMatch: "full"},
   { path: 'home', component: HomeComponent },
   { path: 'about-cookdev', component: AboutCookDevComponent },
   { path: 'alaina/about-alaina', component: AboutAlainaComponent },

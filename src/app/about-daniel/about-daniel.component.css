@@ -1,21 +1,28 @@
 .about-page-container {
-    background: rgb(21,21,21);
+    background: rgb(21,21,21, .9);
     max-width: 750px;
     margin: auto;
     padding: 30px;
+    border-radius: 5%;
 }
 
 .about-page__title {
-    color: #4591db;
+    color: white;
     text-align: center;
-    font-size: 18px;
+    font-size: 30px;
     font-family: Georgia, serif, cursive;
 }
 
 .about-page__text {
     color: #4591db;
-    font-size: 12px;
+    font-size: 16px;
     font-family: Georgia, serif, cursive;
+}
+
+h2 {
+  color: white;
+  font-size: 20px;
+  font-family: Georgia, serif, cursive;
 }
 
 .about-page__image {

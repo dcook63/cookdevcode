@@ -1,0 +1,56 @@
+.about-page-container {
+  background: rgb(21,21,21, .9);
+  max-width: 750px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 5%;
+}
+
+.about-page__title {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: Georgia, serif, cursive;
+}
+
+.about-page__text {
+  color: #4591db;
+  font-size: 14px;
+  font-family: Georgia, serif, cursive;
+  padding-bottom: 10px;
+}
+
+h1 {
+color: white;
+font-size: 25px;
+font-family: Georgia, serif, cursive;
+text-align: center;
+}
+
+h2 {
+color: white;
+font-size: 20px;
+font-family: Georgia, serif, cursive;
+text-align: center;
+padding-bottom: 10px;
+}
+
+.about-page__image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.med-assist-logo {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 60%;
+  display: block;
+  margin: auto;
+}
+
+img {
+  padding-bottom: 10px;
+}

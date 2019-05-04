@@ -24,7 +24,7 @@
             <span class="slds-assistive-text">Open App Launcher</span>
           </button>
           <button *ngIf="!isMobile" class="slds-button slds-icon-waffle_container slds-context-bar__button"
-            title="Navigate Home" routerLink="">
+            title="Navigate Home" routerLink="home">
             <span class="slds-icon-waffle nav-item">
               <span class="slds-r1"></span>
               <span class="slds-r2"></span>
@@ -47,13 +47,7 @@
 
     <nav *ngIf="!isMobile" class="slds-context-bar__secondary" role="navigation">
       <ul class="slds-grid">
-        <li class="slds-context-bar__item" *ngIf="isMobile">
-          <a href="" class="slds-context-bar__label-action" title="Menu Item">
-            <span class="slds-truncate nav-item" title="Home"> Home</span>
-          </a>
-        </li>
-
-        <div class="slds-dropdown-trigger slds-dropdown-trigger_click dropdown-nav-item"
+        <div id="daniel-menu" class="slds-dropdown-trigger slds-dropdown-trigger_click dropdown-nav-item slds-context-bar__item nav-bar-hover"
           [ngClass]="{'slds-is-open': danielOpen}">
           <button id="daniel-menu" class="slds-truncate nav-item" role="menu" aria-haspopup="true"
             title="About Daniel"><i class="fas fa-male"></i> Daniel</button>
@@ -73,7 +67,7 @@
           </div>
         </div>
 
-        <div class="slds-dropdown-trigger slds-dropdown-trigger_click dropdown-nav-item"
+        <div id="alaina-menu" class="dropdown-nav-item slds-context-bar__item nav-bar-hover slds-dropdown-trigger slds-dropdown-trigger_click"
           [ngClass]="{'slds-is-open': alainaOpen}">
           <button id="alaina-menu" class="slds-truncate nav-item" title="About Alaina"><i class="fas fa-female"></i>
             Alaina</button>
@@ -93,9 +87,9 @@
           </div>
         </div>
 
-        <li class="slds-context-bar__item nav-item">
+        <li class="slds-context-bar__item nav-item nav-bar-hover nav-bar-hover">
           <a routerLink="about-cookdev" class="slds-context-bar__label-action" title="Menu Item">
-            <span class="slds-truncate nav-item" title="About Cook Development"><i class="fas fa-laptop-code"></i> About
+            <span class="slds-truncate nav-item nav-bar-hover" title="About Cook Development"><i class="fas fa-laptop-code"></i> About
               Cook Development</span>
           </a>
         </li>

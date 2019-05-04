@@ -1,30 +1,34 @@
 .about-page-container {
-    background: rgb(21,21,21);
-    max-width: 750px;
-    margin: auto;
-    padding: 30px;
+  background: rgb(21,21,21, .9);
+  max-width: 750px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 5%;
 }
 
 .about-page__title {
-    color: #4591db;
-    text-align: center;
-    font-size: 18px;
-    font-family: Georgia, serif, cursive;
-    padding-bottom: 10px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: Georgia, serif, cursive;
 }
 
 .about-page__text {
-    color: #4591db;
-    font-size: 12px;
-    font-family: Georgia, serif, cursive;
-    padding-bottom: 10px;
+  color: #4591db;
+  font-size: 16px;
+  font-family: Georgia, serif, cursive;
+}
+
+h2 {
+color: white;
+font-size: 20px;
+font-family: Georgia, serif, cursive;
 }
 
 .about-page__image {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    display: block;
-    margin: auto;
-    margin-bottom: 20px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
 }
